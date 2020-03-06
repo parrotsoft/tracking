@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
     //Description: Escuchamos newLocation y emitimos por showLocation
     socket.on('newLocation', (data) => {
         console.log(`llego ${data}`);
-        socket.emit('showLocation', data);
+        socket.broadcast.emit('showLocation', data);
     });
     
     socket.on('disconnect', () => {
