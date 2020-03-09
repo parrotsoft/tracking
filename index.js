@@ -19,12 +19,12 @@ io.on('connection', (socket) => {
 
     //Description: Escuchamos newLocation y emitimos por showLocation
     socket.on('newLocation', (data) => {
-        console.log(`llego ${JSON.stringify(data)}`);
+        console.log(`${socket.handshake.address} => ${JSON.stringify(data)}`);
         socket.broadcast.emit('showLocation', data);
     });
     
     socket.on('disconnect', () => {
-        console.log(`Disconnect node IP ${socket.handshake.address}`);
+        console.error(`Disconnect node IP ${socket.handshake.address}`);
     });
 
 });
